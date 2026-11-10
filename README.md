@@ -1,4 +1,5 @@
 # 🛡️ CyberTrace AI
+
 ### From Security Signals to Evidence-Driven Decisions
 
 **An AI-assisted SOC investigation and cyber impact analysis platform.**
@@ -10,6 +11,25 @@ CyberTrace AI is designed to help security analysts investigate suspicious activ
 Rather than treating AI as the only source of security decisions, CyberTrace AI combines deterministic detection rules, structured evidence, MITRE ATT&CK mapping, threat intelligence enrichment, and AI-assisted reasoning.
 
 The goal is simple: **make security investigations more explainable, measurable, and actionable.**
+
+---
+
+## 📸 Application Screenshots
+
+### Main Dashboard
+![CyberTrace AI Dashboard](screenshots/01-dashboard.png)
+
+### Incident Investigation
+![Incident Investigation](screenshots/02-incident-investigation.png)
+
+### Detection Evaluation
+![Detection Evaluation](screenshots/03-detection-evaluation.png)
+
+### Confusion Matrix & Rule Coverage
+![Confusion Matrix](screenshots/04-confusion-matrix.png)
+
+### Cyber Impact Simulator
+![Cyber Impact Simulator](screenshots/05-cyber-impact-simulator.png)
 
 ---
 
@@ -44,7 +64,7 @@ CyberTrace AI is built around an evidence-first investigation philosophy.
 | Cyber Impact Simulator | Connects technical incident scenarios with potential business consequences |
 | No-API mode | Allows core deterministic workflows to operate without an LLM API key |
 
-### The signature feature: Cyber Impact Simulator
+### The Signature Feature: Cyber Impact Simulator
 
 CyberTrace AI includes a custom Cyber Impact Simulator that estimates the potential business impact of a hypothetical security incident.
 
@@ -93,7 +113,7 @@ These rules provide a consistent detection foundation for investigation and eval
 
 Detected behaviors are associated with relevant MITRE ATT&CK techniques.
 
-This provides context about the potential adversary behavior and helps analysts understand what a finding represents.
+This provides context about potential adversary behavior and helps analysts understand what a finding represents.
 
 ### 04 — Threat Intelligence Enrichment
 
@@ -136,31 +156,33 @@ This feature bridges the gap between technical security analysis and business-le
 
 ## 🏗️ System Architecture
 
+CyberTrace AI follows a structured investigation and evaluation architecture.
+
 ```text
                  ┌─────────────────────────────┐
-                 │       Streamlit UI         │
+                 │       Streamlit UI          │
                  └──────────────┬──────────────┘
                                 │
-              ┌─────────────────┼──────────────────┐
-              │                 │                  │
-              ▼                 ▼                  ▼
-     Incident Investigation  Detection          Cyber Impact
-                             Evaluation          Simulator
-              │                 │                  │
-              ▼                 ▼                  ▼
-     Event Normalization   Synthetic Cases    Impact Factors
-              │                 │                  │
-              ▼                 ▼                  ▼
-     Evidence Extraction  Detection Rules    Rule-Based Estimate
-              │                 │
-              ▼                 ▼
-     Threat Intelligence   Metrics & Results
+               ┌─────────────────┼──────────────────┐
+               │                 │                  │
+               ▼                 ▼                  ▼
+      Incident Investigation  Detection          Cyber Impact
+                              Evaluation          Simulator
+               │                 │                  │
+               ▼                 ▼                  ▼
+      Event Normalization   Synthetic Cases    Impact Factors
+               │                 │                  │
+               ▼                 ▼                  ▼
+      Evidence Extraction  Detection Rules    Rule-Based Estimate
+               │                 │
+               ▼                 ▼
+      Threat Intelligence   Metrics & Results
               │
               ▼
-     MITRE ATT&CK Mapping
+      MITRE ATT&CK Mapping
               │
               ▼
-     AI-Assisted Investigation
+      AI-Assisted Investigation
               │
               ▼
        Analyst-Oriented Output
@@ -268,37 +290,39 @@ CyberTrace AI follows several practical design principles:
 - Git
 - Gemini API key (optional, for Gemini-based analysis)
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/priyadarshini116/CyberTrace-AI.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate to the Project
 
 ```bash
-cd CyberTrace-AI/AI-SOC-Copilot-main
+cd CyberTrace-AI/CyberTrace-AI-App
 ```
 
-### 3. Create a virtual environment
+### 3. Create a Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
-Activate it on Windows:
+### 4. Activate the Environment
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 5. Install Dependencies
 
 ```bash
-venv\Scripts\activate
+python -m pip install -r requirements.txt
 ```
 
-### 4. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Configure Gemini (Optional)
+### 6. Configure Gemini (Optional)
 
 Set your API key through an environment variable.
 
@@ -313,10 +337,10 @@ Replace `YOUR_API_KEY` with your own key.
 
 Do not hardcode your API key in the source code or commit it to GitHub.
 
-### 6. Run CyberTrace AI
+### 7. Run CyberTrace AI
 
 ```bash
-streamlit run CyberTrace_AI_app.py
+python -m streamlit run app.py
 ```
 
 The application should open in your browser.
@@ -325,26 +349,34 @@ The application should open in your browser.
 
 ## 📁 Project Structure
 
+The project contains the following main components:
+
 ```text
 CyberTrace-AI/
 │
-├── AI-SOC-Copilot-main/
+├── CyberTrace-AI-App/
 │   │
-│   ├── CyberTrace_AI_app.py
-│   ├── requirements.txt
-│   ├── README.md
-│   │
-│   ├── detection/
-│   ├── evaluation/
-│   ├── threat_intelligence/
+│   ├── .streamlit/
+│   ├── copilot/
+│   ├── data/
+│   ├── samples/
 │   ├── tests/
+│   ├── screenshots/
 │   │
-│   └── ...
+│   ├── app.py
+│   ├── app_backup.py
+│   ├── app_old.py
+│   ├── cli.py
+│   ├── requirements.txt
+│   ├── requirements-dev.txt
+│   ├── README.md
+│   ├── LICENSE
+│   └── .gitignore
 │
 └── .gitignore
 ```
 
-The exact folder organization depends on the files included in the repository.
+The `.venv` virtual environment is created locally and should not be committed to GitHub.
 
 ---
 
